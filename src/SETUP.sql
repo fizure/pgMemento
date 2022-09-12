@@ -851,7 +851,7 @@ LANGUAGE sql IMMUTABLE STRICT;
 CREATE OR REPLACE FUNCTION pgmemento.column_array_to_value_list(columns TEXT[]) RETURNS TEXT AS
 $$
 SELECT
-  array_to_string(array_agg(format('%I', v)), ', ')
+  'ARRAY['||array_to_string(array_agg(format('%I', v)), ', ')||']'
 FROM
   unnest($1) k,
   unnest($1) v
