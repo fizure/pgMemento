@@ -104,7 +104,7 @@ BEGIN
     p.pronamespace = n.oid
     AND n.nspname = 'pgmemento';
 
-  ASSERT array_length(pgm_objects,1) = 94, 'Error: Incorrect number of stored procedures!';
+  ASSERT array_length(pgm_objects,1) = 95, 'Error: Incorrect number of stored procedures!';
   ASSERT pgm_objects[1] = 'audit_table_check;record;tid integer, tab_name text, tab_schema text, OUT table_log_id integer, OUT log_tab_name text, OUT log_tab_schema text, OUT log_audit_id_column text, OUT log_tab_id integer, OUT recent_tab_name text, OUT recent_tab_schema text, OUT recent_audit_id_column text, OUT recent_tab_id integer', 'Error: Expected different function and/or arguments';
   ASSERT pgm_objects[2] = 'column_array_to_column_list;text;columns text[]', 'Error: Expected different function and/or arguments';
   ASSERT pgm_objects[3] = 'create_restore_template;SETOF void;until_tid integer, template_name text, table_name text, schema_name text DEFAULT ''public''::text, preserve_template boolean DEFAULT false', 'Error: Expected different function and/or arguments';
