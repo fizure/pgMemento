@@ -839,7 +839,7 @@ SECURITY DEFINER;
 CREATE OR REPLACE FUNCTION pgmemento.column_array_to_column_list(columns TEXT[]) RETURNS TEXT AS
 $$
 SELECT
-  array_to_string(array_agg(format('%L', k)), ', ')
+  'ARRAY['||array_to_string(array_agg(format('%L', k)), ', ')||']'
 FROM
   unnest($1) k,
   unnest($1) v
